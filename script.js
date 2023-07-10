@@ -66,3 +66,19 @@ function game() {
 }
 
 game();
+
+const rockBtn = document.getElementById("rockBtn");
+const paperBtn = document.getElementById("paperBtn");
+const scissorsBtn = document.getElementById("scissorsBtn");
+const userResultsDiv = document.getElementById("userResults");
+const computerResultsDiv = document.getElementById("computerResults");
+const resultsDiv = document.getElementById("results");
+let myPoints = 0;
+let computerPoints = 0;
+rockBtn.addEventListener("click", () => {
+    userResultsDiv.textContent = "You chose rock.";
+    let computerChoice = getComputerChoice();
+    computerResultsDiv.textContent = `Computer chose ${computerChoice}.`;
+    let winOrLose = playRound("rock", computerChoice);
+    resultsDiv.textContent = winOrLose;
+});

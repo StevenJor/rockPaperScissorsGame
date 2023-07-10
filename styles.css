@@ -6,6 +6,7 @@ body {
     align-items: center;
     margin: 0%;
     height: 100vh;
+    flex-wrap: wrap;
 }
 
 #results {
@@ -13,10 +14,18 @@ body {
 }
 
 #userResults, #computerResults {
-    width: 20%;
+    width: 24%;
 }
 
 #userResults, #computerResults, #results {
     border: 1px solid red;
     height: 50%;
+    margin-bottom: 0%;
+}
+
+button {
+    margin: -20% 1% 0% 1%;
+    padding: 0.25rem 1rem;
+    border-radius: 0.75em;
+    background-color: bisque;
 }

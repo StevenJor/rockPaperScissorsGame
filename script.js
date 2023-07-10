@@ -65,7 +65,7 @@ function game() {
     }
 }
 
-game();
+//game();
 
 const rockBtn = document.getElementById("rockBtn");
 const paperBtn = document.getElementById("paperBtn");

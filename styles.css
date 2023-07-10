@@ -1,0 +1,22 @@
+body {
+    background-image: url("images/pexels-thirdman-8926558.jpg");
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0%;
+    height: 100vh;
+}
+
+#results {
+    width: 50%;
+}
+
+#userResults, #computerResults {
+    width: 20%;
+}
+
+#userResults, #computerResults, #results {
+    border: 1px solid red;
+    height: 50%;
+}

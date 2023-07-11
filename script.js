@@ -15,7 +15,7 @@ function playRound(playerSelection, computerSelection) {
         return "You Lose! Paper beats Rock.";
     }
     else if (playerSelection === "paper" && computerSelection === "rock") {
-        return "You win! Paper beats Rock.";
+        return "You Win! Paper beats Rock.";
     }
     else if (playerSelection === "paper" && computerSelection === "scissors") {
         return "You Lose! Scissors beat Paper.";
@@ -31,54 +31,79 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    let computerPoints = 0;
-    let myPoints = 0;
-    for (let i = 0; i < 5; i++) {
-        let myChoice = prompt("Enter your choice");
-        let computerChoice = getComputerChoice();
-        console.log(`You chose ${myChoice}.`);
-        console.log(`The computer chose ${computerChoice}.`);
-        let result = playRound(myChoice, computerChoice);
-        console.log(result);
-        if (result.slice(4, 7) === "Win") {
-            myPoints++;
-        }
-        else if (result.slice(4, 8) === "Lose") {
-            computerPoints++;
-        }
-    }
-    if (myPoints > computerPoints) {
-        console.log(`You have ${myPoints} point/s.`);
-        console.log(`The computer has ${computerPoints} point/s.`);
-        console.log(`You are the winner!`);
-    }
-    else if (myPoints < computerPoints) {
-        console.log(`You have ${myPoints} point/s.`);
-        console.log(`The computer has ${computerPoints} point/s.`);
-        console.log(`The computer is the winner!`);
-    }
-    else {
-        console.log(`You have ${myPoints} point/s.`);
-        console.log(`The computer has ${computerPoints} point/s.`);
-        console.log(`There is no winner!`);
-    }
-}
-
-//game();
-
 const rockBtn = document.getElementById("rockBtn");
 const paperBtn = document.getElementById("paperBtn");
 const scissorsBtn = document.getElementById("scissorsBtn");
+const resetBtn = document.getElementById("resetBtn");
 const userResultsDiv = document.getElementById("userResults");
 const computerResultsDiv = document.getElementById("computerResults");
 const resultsDiv = document.getElementById("results");
 let myPoints = 0;
 let computerPoints = 0;
-rockBtn.addEventListener("click", () => {
-    userResultsDiv.textContent = "You chose rock.";
+
+function onCLickButton(tool) {
+    userResultsDiv.textContent = "";
+    computerResultsDiv.textContent = "";
+    resultsDiv.textContent = "";
+    let p1 = document.createElement("p");
+    p1.textContent = `You chose ${tool}.`;
+    userResultsDiv.appendChild(p1);
+    let p2 = document.createElement("p");
     let computerChoice = getComputerChoice();
-    computerResultsDiv.textContent = `Computer chose ${computerChoice}.`;
-    let winOrLose = playRound("rock", computerChoice);
-    resultsDiv.textContent = winOrLose;
+    p2.textContent = `Computer chose ${computerChoice}`;
+    computerResultsDiv.appendChild(p2);
+
+    
+    let winOrLose = playRound(tool, computerChoice);
+    let p3 = document.createElement("p");
+    p3.textContent = winOrLose;
+    resultsDiv.appendChild(p3);
+    if (winOrLose.slice(4, 7) === "Win") {
+        myPoints++;
+    }
+    else if (winOrLose.slice(4, 8) === "Lose") {
+        computerPoints++;
+    }
+
+    let p4 = document.createElement("p");
+    p4.textContent = `You have ${myPoints} point/s.`;
+    userResultsDiv.appendChild(p4);
+    let p5 = document.createElement("p");
+    p5.textContent = `Computer has ${computerPoints} point/s.`;
+    computerResultsDiv.appendChild(p5);
+}
+rockBtn.addEventListener("click", () => {
+    onCLickButton("Rock");
+    sayWinner();
 });
+paperBtn.addEventListener("click", () => {
+    onCLickButton("Paper");
+    sayWinner();
+});
+scissorsBtn.addEventListener("click", () => {
+    onCLickButton("Scissors");
+    sayWinner();
+});
+resetBtn.addEventListener("click", () => {
+    userResultsDiv.textContent = "";
+    computerResultsDiv.textContent = "";
+    resultsDiv.textContent = "";
+    myPoints = 0;
+    computerPoints = 0;
+});
+function sayWinner() {
+    if (myPoints === 5) {
+        let h31 = document.createElement("h3");
+        h31.textContent = "You are the winner!";
+        resultsDiv.appendChild(h31)
+        myPoints = 0;
+        computerPoints = 0;
+    }
+    else if (computerPoints === 5) {
+        let h32 = document.createElement("h3");
+        h32.textContent = "The computer is the winner!";
+        resultsDiv.appendChild(h32);
+        myPoints = 0;
+        computerPoints = 0;
+    }
+}

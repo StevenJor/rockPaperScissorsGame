@@ -19,12 +19,12 @@ body {
 
 #userResults, #computerResults, #results {
     border: 1px solid red;
-    height: 50%;
+    height: 20%;
     margin-bottom: 0%;
 }
 
 button {
-    margin: -20% 1% 0% 1%;
+    margin: -30% 1% 0% 1%;
     padding: 0.25rem 1rem;
     border-radius: 0.75em;
     background-color: bisque;

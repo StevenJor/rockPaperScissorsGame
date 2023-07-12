@@ -46,9 +46,13 @@ function onCLickButton(tool) {
     computerResultsDiv.textContent = "";
     resultsDiv.textContent = "";
     let p1 = document.createElement("p");
+    p1.style.color = "green";
+    p1.style.fontWeight = "600";
     p1.textContent = `You chose ${tool}.`;
     userResultsDiv.appendChild(p1);
     let p2 = document.createElement("p");
+    p2.style.color = "green";
+    p2.style.fontWeight = "600";
     let computerChoice = getComputerChoice();
     p2.textContent = `Computer chose ${computerChoice}`;
     computerResultsDiv.appendChild(p2);
@@ -56,7 +60,10 @@ function onCLickButton(tool) {
     
     let winOrLose = playRound(tool, computerChoice);
     let p3 = document.createElement("p");
+    p3.style.color = "green";
+    p3.style.fontWeight = "600";
     p3.textContent = winOrLose;
+    
     resultsDiv.appendChild(p3);
     if (winOrLose.slice(4, 7) === "Win") {
         myPoints++;
@@ -66,9 +73,13 @@ function onCLickButton(tool) {
     }
 
     let p4 = document.createElement("p");
+    p4.style.color = "green";
+    p4.style.fontWeight = "600";
     p4.textContent = `You have ${myPoints} point/s.`;
     userResultsDiv.appendChild(p4);
     let p5 = document.createElement("p");
+    p5.style.color = "green";
+    p5.style.fontWeight = "600";
     p5.textContent = `Computer has ${computerPoints} point/s.`;
     computerResultsDiv.appendChild(p5);
 }
